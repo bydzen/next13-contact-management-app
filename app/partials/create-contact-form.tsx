@@ -1,7 +1,9 @@
 "use client"
 
 import React from "react"
+import { Loader2 as Loader } from "lucide-react"
 
+import { wait } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -12,6 +14,8 @@ export default function CreateContactForm() {
   const emailRef = React.useRef<HTMLInputElement>(null)
   const phoneRef = React.useRef<HTMLInputElement>(null)
 
+  const [isPending, startTransition] = React.useTransition()
+
   const action = async (data: FormData) => {
     const name = data.get("name") as string
     const email = data.get("email") as string
@@ -21,7 +25,10 @@ export default function CreateContactForm() {
       return
     }
 
-    await addContactAction(name, email, phone)
+    startTransition(async () => {
+      await wait(1000)
+      addContactAction(name, email, phone) as Promise<void>
+    })
 
     // Reset form
     nameRef.current!.value = ""
@@ -67,8 +74,10 @@ export default function CreateContactForm() {
           className="bg-zinc-100"
         />
       </div>
-      <Button type="submit" className="w-full">
-        Add Contact
+
+      <Button type="submit" disabled={isPending} className="w-full">
+        {isPending ? <Loader className="mr-2 h-4 w-4 animate-spin" /> : null}
+        {isPending ? "Adding..." : "Add"}
       </Button>
     </form>
   )

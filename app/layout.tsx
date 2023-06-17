@@ -32,12 +32,12 @@ export default function RootLayout({ children }: ComponentWithChildren) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-zinc-100 font-sans antialiased container py-10",
+            "min-h-screen w-full bg-zinc-100 font-sans antialiased py-10",
             fontSans.variable
           )}
         >
           <Header />
-          {children}
+          <div className="container">{children}</div>
           <TailwindIndicator />
         </body>
       </html>

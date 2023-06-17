@@ -4,6 +4,7 @@ import React from "react"
 import { Contact } from "@prisma/client"
 import { Loader2 as Loader } from "lucide-react"
 
+import { wait } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { updateContactAction } from "@/app/_actions"
@@ -21,6 +22,7 @@ export default function UpdateContactForm({ contact }: UpdateContactFormProps) {
     const phone = data.get("phone") as string
 
     startTransition(async () => {
+      await wait(1000)
       updateContactAction(contact.id, name, email, phone) as Promise<void>
     })
   }
