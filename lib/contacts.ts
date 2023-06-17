@@ -1,5 +1,3 @@
-import { Contact } from "@prisma/client"
-
 import prisma from "./prisma"
 
 export async function getContacts() {
@@ -17,9 +15,41 @@ export async function getContacts() {
   }
 }
 
+export const getContact = async (id: string) => {
+  try {
+    const contact = await prisma.contact.findUnique({
+      where: { id },
+    })
+    return { contact }
+  } catch (error) {
+    return { error }
+  }
+}
+
 export async function addContact(name: string, email: string, phone: string) {
   try {
     const contact = await prisma.contact.create({
+      data: {
+        name,
+        email,
+        phone,
+      },
+    })
+    return { contact }
+  } catch (error) {
+    return { error }
+  }
+}
+
+export const updateContact = async (
+  id: string,
+  name: string,
+  email: string,
+  phone: string
+) => {
+  try {
+    const contact = await prisma.contact.update({
+      where: { id },
       data: {
         name,
         email,

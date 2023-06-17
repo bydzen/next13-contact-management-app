@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import Link from "next/link"
 import { Contact } from "@prisma/client"
 import { Loader2 as Loader } from "lucide-react"
 
@@ -25,7 +26,7 @@ export default function ContactItem({ contact }: ContactItemProps) {
       </section>
       <section className="flex justify-center items-center gap-2">
         <Button size="sm" variant="outline">
-          Detail
+          <Link href={`/contacts/${contact.id}`}>Detail</Link>
         </Button>
         <Button
           size="sm"

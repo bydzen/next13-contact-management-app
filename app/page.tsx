@@ -11,10 +11,7 @@ export default async function HomePage() {
   const { contacts } = await getContacts()
 
   return (
-    <div className="container py-10">
-      <header>
-        <h1 className="text-center font-bold text-3xl">Contact Management</h1>
-      </header>
+    <>
       <main className="grid grid-cols-7 gap-8 mt-8">
         <section className="w-full col-span-5 ">
           <div className="bg-white p-8 shadow-md rounded-md space-y-2">
@@ -33,6 +30,6 @@ export default async function HomePage() {
           </div>
         </section>
       </main>
-    </div>
+    </>
   )
 }

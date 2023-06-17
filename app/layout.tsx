@@ -5,6 +5,7 @@ import { ComponentWithChildren } from "@/types/props"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import { Header } from "@/components/Header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
 export const metadata: Metadata = {
@@ -31,10 +32,11 @@ export default function RootLayout({ children }: ComponentWithChildren) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-zinc-100 font-sans antialiased",
+            "min-h-screen bg-zinc-100 font-sans antialiased container py-10",
             fontSans.variable
           )}
         >
+          <Header />
           {children}
           <TailwindIndicator />
         </body>
