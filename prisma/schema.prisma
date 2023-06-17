@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  id    String @id @default(uuid())
+  name  String @db.VarChar(100)
+  email String @unique @db.VarChar(100)
+  phone String @unique @db.VarChar(100)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.DateTime(6)
+
+  @@map("contacts")
+}
