@@ -27,13 +27,11 @@ export default function CreateContactForm() {
 
     startTransition(async () => {
       await wait(1000)
-      addContactAction(name, email, phone) as Promise<void>
+      await addContactAction(name, email, phone)
+      nameRef.current!.value = ""
+      emailRef.current!.value = ""
+      phoneRef.current!.value = ""
     })
-
-    // Reset form
-    nameRef.current!.value = ""
-    emailRef.current!.value = ""
-    phoneRef.current!.value = ""
   }
 
   return (
