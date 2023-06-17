@@ -28,6 +28,34 @@ export const getContact = async (id: string) => {
 
 export async function addContact(name: string, email: string, phone: string) {
   try {
+    const countEmail = await prisma.contact.count({
+      where: {
+        email,
+      },
+    })
+
+    if (countEmail > 0) {
+      return {
+        error: {
+          message: "Email already exists",
+        },
+      }
+    }
+
+    const countPhone = await prisma.contact.count({
+      where: {
+        phone,
+      },
+    })
+
+    if (countPhone > 0) {
+      return {
+        error: {
+          message: "Phone already exists",
+        },
+      }
+    }
+
     const contact = await prisma.contact.create({
       data: {
         name,
@@ -35,6 +63,7 @@ export async function addContact(name: string, email: string, phone: string) {
         phone,
       },
     })
+
     return { contact }
   } catch (error) {
     return { error }

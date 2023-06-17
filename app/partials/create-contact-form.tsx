@@ -2,6 +2,7 @@
 
 import React from "react"
 import { Loader2 as Loader } from "lucide-react"
+import { toast } from "react-hot-toast"
 
 import { wait } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -13,6 +14,8 @@ export default function CreateContactForm() {
   const nameRef = React.useRef<HTMLInputElement>(null)
   const emailRef = React.useRef<HTMLInputElement>(null)
   const phoneRef = React.useRef<HTMLInputElement>(null)
+
+  const [error, setError] = React.useState<string | null>(null)
 
   const [isPending, startTransition] = React.useTransition()
 
@@ -27,7 +30,13 @@ export default function CreateContactForm() {
 
     startTransition(async () => {
       await wait(1000)
-      await addContactAction(name, email, phone)
+      const { error } = (await addContactAction(name, email, phone)) as any
+
+      if (error) {
+        toast.error(error.message)
+        return
+      }
+
       nameRef.current!.value = ""
       emailRef.current!.value = ""
       phoneRef.current!.value = ""

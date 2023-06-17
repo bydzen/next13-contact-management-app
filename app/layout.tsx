@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils"
 import { Header } from "@/components/header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
+import Providers from "./providers"
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -36,9 +38,11 @@ export default function RootLayout({ children }: ComponentWithChildren) {
             fontSans.variable
           )}
         >
-          <Header />
-          <div className="container">{children}</div>
-          <TailwindIndicator />
+          <Providers>
+            <Header />
+            <div className="container">{children}</div>
+            <TailwindIndicator />
+          </Providers>
         </body>
       </html>
     </>
