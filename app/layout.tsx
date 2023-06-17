@@ -31,13 +31,11 @@ export default function RootLayout({ children }: ComponentWithChildren) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
+            "min-h-screen bg-zinc-100 font-sans antialiased",
             fontSans.variable
           )}
         >
-          <div className="relative flex min-h-screen flex-col">
-            <div className="flex-1">{children}</div>
-          </div>
+          {children}
           <TailwindIndicator />
         </body>
       </html>
