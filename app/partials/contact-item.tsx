@@ -25,9 +25,11 @@ export default function ContactItem({ contact }: ContactItemProps) {
         <p className="font-light text-lg">{contact.email}</p>
       </section>
       <section className="flex justify-center items-center gap-2">
-        <Button size="sm" variant="outline">
-          <Link href={`/contacts/${contact.id}`}>Detail</Link>
-        </Button>
+        <Link href={`/contacts/${contact.id}`}>
+          <Button size="sm" variant="outline">
+            Detail
+          </Button>
+        </Link>
         <Button
           size="sm"
           disabled={isPending}
