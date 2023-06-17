@@ -21,9 +21,9 @@ export default async function ContactPage({ params }: ContactPageProps) {
         <div className="bg-white p-8 shadow-md rounded-md space-y-2">
           <div className="flex justify-between items-center">
             <h1 className="text-xl font-bold">Contact Detail</h1>
-            <Button size="sm">
-              <Link href="/">Back</Link>
-            </Button>
+            <Link href="/">
+              <Button size="sm">Back</Button>
+            </Link>
           </div>
           <div className="py-4">
             <p>Name : {contact?.name}</p>

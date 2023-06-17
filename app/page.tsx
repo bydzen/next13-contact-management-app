@@ -1,11 +1,11 @@
-import ContactList from "@/partials/ContactList"
-import CreateContactForm from "@/partials/CreateContactForm"
+import ContactList from "@/partials/contact-list"
+import CreateContactForm from "@/partials/create-contact-form"
 import { Contact } from "@prisma/client"
 
 import { getContacts } from "@/lib/contacts"
 
-import ContactListPagination from "./partials/ContactListPagination"
-import SearchContactForm from "./partials/SearchContactForm"
+import ContactListPagination from "./partials/contact-list-pagination"
+import SearchContactForm from "./partials/search-contact-form"
 
 export default async function HomePage() {
   const { contacts } = await getContacts()
