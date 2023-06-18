@@ -4,6 +4,7 @@ import React from "react"
 import Link from "next/link"
 import { Contact } from "@prisma/client"
 import { Loader2 as Loader } from "lucide-react"
+import { toast } from "react-hot-toast"
 
 import { wait } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -19,7 +20,9 @@ export default function ContactItem({ contact }: ContactItemProps) {
   const handleRemove = () => {
     startTransition(async () => {
       await wait(1000)
-      removeContactAction(contact.id) as Promise<void>
+      await removeContactAction(contact.id)
+
+      toast.success("Contact removed successfully.")
     })
   }
 

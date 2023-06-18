@@ -51,11 +51,12 @@ export async function addContact(name: string, email: string, phone: string) {
 
     if (countPhone > 0) throw new Error("Phone already exists")
 
-    await prisma.contact.create({
+    const contact = await prisma.contact.create({
       data: { name, email, phone },
     })
+    return { contact, error: null }
   } catch (error) {
-    return { error }
+    return { contact: null, error }
   }
 }
 
@@ -82,9 +83,9 @@ export const updateContact = async (
         phone,
       },
     })
-    return { contact }
+    return { contact, error: null }
   } catch (error) {
-    return { error }
+    return { contact: null, error }
   }
 }
 
