@@ -8,7 +8,7 @@ interface ContactListProps {
 export default function ContactList({ contacts }: ContactListProps) {
   return (
     <ul className="space-y-4">
-      {contacts.map((contact) => (
+      {contacts?.map((contact) => (
         <ContactItem contact={contact} />
       ))}
     </ul>
