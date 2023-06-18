@@ -14,7 +14,7 @@ export default function ContactList({ contacts }: ContactListProps) {
         </p>
       ) : null}
       {contacts?.map((contact) => (
-        <ContactItem contact={contact} />
+        <ContactItem key={contact.id} contact={contact} />
       ))}
     </ul>
   )
