@@ -14,6 +14,20 @@ interface ContactPageProps {
 
 export default async function ContactPage({ params }: ContactPageProps) {
   const { contact } = await getContact(params.contactId)
+  const month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]
 
   return (
     <main className="grid grid-cols-7 gap-8 mt-8">
@@ -26,17 +40,48 @@ export default async function ContactPage({ params }: ContactPageProps) {
             </Link>
           </div>
           <div className="py-4">
-            <p>Name : {contact?.name}</p>
-            <p>Email : {contact?.email}</p>
-            <p>Phone : {contact?.phone}</p>
-            <p>
-              Created : {contact?.createdAt.toLocaleDateString()} -{" "}
-              {contact?.createdAt.toLocaleTimeString()}
-            </p>
-            <p>
-              Updated : {contact?.updatedAt.toLocaleDateString()} -{" "}
-              {contact?.updatedAt.toLocaleTimeString()}
-            </p>
+            <table className="table-auto">
+              {/* <thead>
+                <tr>
+                  <th>Song</th>
+                  <th>Artist</th>
+                </tr>
+              </thead> */}
+              <tbody>
+                <tr>
+                  <td className="text-gray-500">Name </td>
+                  <td>:&nbsp;{contact?.name}</td>
+                </tr>
+                <tr>
+                  <td className="text-gray-500">Email </td>
+                  <td>:&nbsp;{contact?.email}</td>
+                </tr>
+                <tr>
+                  <td className="text-gray-500">Phone </td>
+                  <td>:&nbsp;{contact?.phone}</td>
+                </tr>
+                <tr>
+                  <td className="text-gray-500">Created </td>
+                  <td>
+                    :&nbsp;
+                    {month[contact?.createdAt.getMonth() || 0]}&nbsp;
+                    {contact?.createdAt.getDate()},&nbsp;
+                    {contact?.createdAt.getFullYear()} @{" "}
+                    {contact?.createdAt.toLocaleTimeString()}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="text-gray-500">Last Updated </td>
+                  <td>
+                    :&nbsp;
+                    {month[contact?.updatedAt.getMonth() || 0]}&nbsp;
+                    {contact?.updatedAt.getDate()},&nbsp;
+                    {contact?.updatedAt.getFullYear()} @{" "}
+                    {contact?.updatedAt.toLocaleTimeString()}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

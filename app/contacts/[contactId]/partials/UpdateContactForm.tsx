@@ -39,6 +39,7 @@ export default function UpdateContactForm({ contact }: UpdateContactFormProps) {
           autoComplete="off"
           defaultValue={contact.name}
           className="bg-zinc-100"
+          autoFocus
         />
       </div>
       <div className="flex flex-col">

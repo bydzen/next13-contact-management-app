@@ -79,3 +79,15 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+/* Hide scrollbar but scrollable */
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
