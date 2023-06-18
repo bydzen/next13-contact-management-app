@@ -1,5 +1,5 @@
 import prisma from "./prisma"
-import { addContactValidation } from "./validation"
+import { addContactValidation, updateContactValidation } from "./validation"
 
 export async function getContacts() {
   try {
@@ -29,21 +29,21 @@ export const getContact = async (id: string) => {
 
 export async function addContact(name: string, email: string, phone: string) {
   try {
-    const validContact = await addContactValidation.validate({
-      name,
+    const validContact = await addContactValidation.isValid({
       email,
+      name,
       phone,
     })
 
+    if (!validContact) return
+
     const countEmail = await prisma.contact.count({
-      where: {
-        email: validContact.email,
-      },
+      where: { email },
     })
 
     const countPhone = await prisma.contact.count({
       where: {
-        phone: validContact.phone,
+        phone,
       },
     })
 
@@ -51,15 +51,9 @@ export async function addContact(name: string, email: string, phone: string) {
 
     if (countPhone > 0) throw new Error("Phone already exists")
 
-    const contact = await prisma.contact.create({
-      data: {
-        name: validContact.name,
-        email: validContact.email,
-        phone: validContact.phone,
-      },
+    await prisma.contact.create({
+      data: { name, email, phone },
     })
-
-    return { contact }
   } catch (error) {
     return { error }
   }
@@ -71,6 +65,14 @@ export const updateContact = async (
   email: string,
   phone: string
 ) => {
+  const validContact = await updateContactValidation.isValid({
+    email,
+    name,
+    phone,
+  })
+
+  if (!validContact) return
+
   try {
     const contact = await prisma.contact.update({
       where: { id },

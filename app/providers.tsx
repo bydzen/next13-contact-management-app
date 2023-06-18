@@ -7,7 +7,7 @@ import { ComponentWithChildren } from "@/types/props"
 export default function Providers({ children }: ComponentWithChildren) {
   return (
     <>
-      <Toaster position="bottom-right" />
+      <Toaster position="top-center" />
       {children}
     </>
   )

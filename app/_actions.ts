@@ -9,10 +9,9 @@ export const addContactAction = async (
   email: string,
   phone: string
 ) => {
-  const { error } = await addContact(name, email, phone)
+  await addContact(name, email, phone)
 
   revalidatePath("/")
-  return { error }
 }
 
 export const updateContactAction = async (

@@ -5,3 +5,9 @@ export const addContactValidation = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
   phone: Yup.string().required("Phone is required"),
 })
+
+export const updateContactValidation = Yup.object({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  phone: Yup.string().required("Phone is required"),
+})
