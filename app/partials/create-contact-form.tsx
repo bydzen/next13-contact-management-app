@@ -67,7 +67,7 @@ export default function CreateContactForm() {
           id="name"
           placeholder="Fullname"
           autoComplete="off"
-          className="bg-zinc-100"
+          className="bg-zinc-100 my-1"
         />
         {nameError ? <p className="text-red-500 text-sm">{nameError}</p> : ""}
       </div>
@@ -80,7 +80,7 @@ export default function CreateContactForm() {
           id="email"
           placeholder="Email"
           autoComplete="off"
-          className="bg-zinc-100"
+          className="bg-zinc-100 my-1"
         />
         {emailError ? <p className="text-red-500 text-sm">{emailError}</p> : ""}
       </div>
@@ -88,12 +88,12 @@ export default function CreateContactForm() {
         <label htmlFor="phone">Phone</label>
         <Input
           ref={phoneRef}
-          type="text"
+          type="number"
           name="phone"
           id="phone"
           placeholder="Phone Number"
           autoComplete="off"
-          className="bg-zinc-100"
+          className="bg-zinc-100 my-1"
         />
         {phoneError ? <p className="text-red-500 text-sm">{phoneError}</p> : ""}
       </div>

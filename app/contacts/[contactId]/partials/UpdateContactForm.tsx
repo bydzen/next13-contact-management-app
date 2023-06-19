@@ -64,7 +64,7 @@ export default function UpdateContactForm({ contact }: UpdateContactFormProps) {
           placeholder="Fullname"
           autoComplete="off"
           defaultValue={contact.name}
-          className="bg-zinc-100"
+          className="bg-zinc-100 my-1"
           autoFocus
         />
         {nameError ? <p className="text-red-500 text-sm">{nameError}</p> : ""}
@@ -72,26 +72,26 @@ export default function UpdateContactForm({ contact }: UpdateContactFormProps) {
       <div className="flex flex-col">
         <label htmlFor="email">Email</label>
         <Input
-          type="text"
+          type="email"
           name="email"
           id="email"
           placeholder="Email"
           autoComplete="off"
           defaultValue={contact.email}
-          className="bg-zinc-100"
+          className="bg-zinc-100 my-1"
         />
         {emailError ? <p className="text-red-500 text-sm">{emailError}</p> : ""}
       </div>
       <div className="flex flex-col">
         <label htmlFor="phone">Phone</label>
         <Input
-          type="text"
+          type="number"
           name="phone"
           id="phone"
           placeholder="Phone Number"
           autoComplete="off"
           defaultValue={contact.phone}
-          className="bg-zinc-100"
+          className="bg-zinc-100 my-1"
         />
         {phoneError ? <p className="text-red-500 text-sm">{phoneError}</p> : ""}
       </div>
