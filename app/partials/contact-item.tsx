@@ -2,6 +2,7 @@
 
 import React from "react"
 import Link from "next/link"
+
 import { Contact } from "@prisma/client"
 import { Loader2 as Loader } from "lucide-react"
 import { toast } from "react-hot-toast"
@@ -37,11 +38,18 @@ export default function ContactItem({ contact }: ContactItemProps) {
       </section>
       <section className="flex justify-center items-center gap-2">
         <Link href={`/contacts/${contact.id}`}>
-          <Button size="sm" variant="outline">
+          <Button
+            size="sm"
+            variant="outline"
+          >
             Detail
           </Button>
         </Link>
-        <Button size="sm" disabled={isPending} onClick={handleRemove}>
+        <Button
+          size="sm"
+          disabled={isPending}
+          onClick={handleRemove}
+        >
           {isPending ? <Loader className="mr-2 h-4 w-4 animate-spin" /> : null}
           {isPending ? "Removing..." : "Remove"}
         </Button>

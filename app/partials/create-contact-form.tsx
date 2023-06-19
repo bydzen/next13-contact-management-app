@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+
 import { Loader2 as Loader } from "lucide-react"
 import { toast } from "react-hot-toast"
 
@@ -57,7 +58,10 @@ export default function CreateContactForm() {
   }
 
   return (
-    <form action={action} className="space-y-3">
+    <form
+      action={action}
+      className="space-y-3"
+    >
       <div className="flex flex-col">
         <label htmlFor="name">Name</label>
         <Input
@@ -98,7 +102,11 @@ export default function CreateContactForm() {
         {phoneError ? <p className="text-red-500 text-sm">{phoneError}</p> : ""}
       </div>
 
-      <Button type="submit" disabled={isPending} className="w-full">
+      <Button
+        type="submit"
+        disabled={isPending}
+        className="w-full"
+      >
         {isPending ? <Loader className="mr-2 h-4 w-4 animate-spin" /> : null}
         {isPending ? "Adding..." : "Add"}
       </Button>
