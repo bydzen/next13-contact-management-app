@@ -14,20 +14,6 @@ interface ContactPageProps {
 
 export default async function ContactPage({ params }: ContactPageProps) {
   const { contact } = await getContact(params.contactId)
-  const month = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ]
 
   return (
     <main className="grid grid-cols-7 gap-8 mt-8">
@@ -61,20 +47,26 @@ export default async function ContactPage({ params }: ContactPageProps) {
                   <td className="text-gray-500">Created </td>
                   <td className="text-gray-500 px-3">: </td>
                   <td>
-                    {month[contact?.createdAt.getMonth() || 0]}&nbsp;
-                    {contact?.createdAt.getDate()},&nbsp;
-                    {contact?.createdAt.getFullYear()} @{" "}
-                    {contact?.createdAt.toLocaleTimeString()}
+                    {contact?.createdAt.toLocaleDateString([], {
+                      dateStyle: "long",
+                    })}{" "}
+                    @{" "}
+                    {contact?.createdAt.toLocaleTimeString([], {
+                      timeStyle: "short",
+                    })}
                   </td>
                 </tr>
                 <tr>
                   <td className="text-gray-500">Last Updated </td>
                   <td className="text-gray-500 px-3">: </td>
                   <td>
-                    {month[contact?.updatedAt.getMonth() || 0]}&nbsp;
-                    {contact?.updatedAt.getDate()},&nbsp;
-                    {contact?.updatedAt.getFullYear()} @{" "}
-                    {contact?.updatedAt.toLocaleTimeString()}
+                    {contact?.updatedAt.toLocaleDateString([], {
+                      dateStyle: "long",
+                    })}{" "}
+                    @{" "}
+                    {contact?.updatedAt.toLocaleTimeString([], {
+                      timeStyle: "short",
+                    })}
                   </td>
                 </tr>
               </tbody>
