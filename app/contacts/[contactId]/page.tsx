@@ -41,29 +41,26 @@ export default async function ContactPage({ params }: ContactPageProps) {
           </div>
           <div className="py-4">
             <table className="table-auto">
-              {/* <thead>
-                <tr>
-                  <th>Song</th>
-                  <th>Artist</th>
-                </tr>
-              </thead> */}
               <tbody>
                 <tr>
                   <td className="text-gray-500">Name </td>
-                  <td>:&nbsp;{contact?.name}</td>
+                  <td className="text-gray-500 px-3">: </td>
+                  <td>{contact?.name}</td>
                 </tr>
                 <tr>
                   <td className="text-gray-500">Email </td>
-                  <td>:&nbsp;{contact?.email}</td>
+                  <td className="text-gray-500 px-3">: </td>
+                  <td>{contact?.email}</td>
                 </tr>
                 <tr>
                   <td className="text-gray-500">Phone </td>
-                  <td>:&nbsp;{contact?.phone}</td>
+                  <td className="text-gray-500 px-3">: </td>
+                  <td>{contact?.phone}</td>
                 </tr>
                 <tr>
                   <td className="text-gray-500">Created </td>
+                  <td className="text-gray-500 px-3">: </td>
                   <td>
-                    :&nbsp;
                     {month[contact?.createdAt.getMonth() || 0]}&nbsp;
                     {contact?.createdAt.getDate()},&nbsp;
                     {contact?.createdAt.getFullYear()} @{" "}
@@ -72,8 +69,8 @@ export default async function ContactPage({ params }: ContactPageProps) {
                 </tr>
                 <tr>
                   <td className="text-gray-500">Last Updated </td>
+                  <td className="text-gray-500 px-3">: </td>
                   <td>
-                    :&nbsp;
                     {month[contact?.updatedAt.getMonth() || 0]}&nbsp;
                     {contact?.updatedAt.getDate()},&nbsp;
                     {contact?.updatedAt.getFullYear()} @{" "}
