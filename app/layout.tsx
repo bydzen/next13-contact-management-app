@@ -30,7 +30,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: ComponentWithChildren) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
+      <html
+        lang="en"
+        suppressHydrationWarning
+      >
         <head />
         <body
           className={cn(
