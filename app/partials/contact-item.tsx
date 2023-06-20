@@ -11,20 +11,18 @@ import { wait } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
 import { removeContactAction } from "../_actions"
+import { rootContext } from "../context"
 
 interface ContactItemProps {
   contact: Contact
 }
 export default function ContactItem({ contact }: ContactItemProps) {
-  const [isPending, startTransition] = React.useTransition()
+  const { handleChangeShowRemoveContactPopup, handleSetId } =
+    React.useContext(rootContext)
 
   const handleRemove = () => {
-    startTransition(async () => {
-      await wait(1000)
-      await removeContactAction(contact.id)
-
-      toast.success("Contact removed successfully.")
-    })
+    handleSetId(contact.id)
+    handleChangeShowRemoveContactPopup(true)
   }
 
   return (
@@ -47,11 +45,9 @@ export default function ContactItem({ contact }: ContactItemProps) {
         </Link>
         <Button
           size="sm"
-          disabled={isPending}
           onClick={handleRemove}
         >
-          {isPending ? <Loader className="mr-2 h-4 w-4 animate-spin" /> : null}
-          {isPending ? "Removing..." : "Remove"}
+          Remove
         </Button>
       </section>
     </li>

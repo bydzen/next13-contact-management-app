@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { Header } from "@/components/header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
+import RemoveContactPopup from "./partials/remove-contact-popup"
 import Providers from "./providers"
 
 export const metadata: Metadata = {
@@ -37,14 +38,17 @@ export default function RootLayout({ children }: ComponentWithChildren) {
         <head />
         <body
           className={cn(
-            "min-h-screen w-full bg-zinc-100 font-sans antialiased py-10",
+            "min-h-screen w-full bg-zinc-100 font-sans antialiased",
             fontSans.variable
           )}
         >
           <Providers>
-            <Header />
-            <div className="container">{children}</div>
-            <TailwindIndicator />
+            <div className="relative">
+              <Header />
+              <RemoveContactPopup />
+              <div className="container">{children}</div>
+              <TailwindIndicator />
+            </div>
           </Providers>
         </body>
       </html>
