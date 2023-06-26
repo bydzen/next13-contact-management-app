@@ -1,10 +1,12 @@
 import Link from "next/link"
+
 import { Contact } from "@prisma/client"
 
 import { getContact } from "@/lib/contacts"
 import { Button } from "@/components/ui/button"
 
 import UpdateContactForm from "./partials/UpdateContactForm"
+import BackButton from "./partials/back-button"
 
 interface ContactPageProps {
   params: {
@@ -21,9 +23,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
         <div className="bg-white p-8 shadow-md rounded-md space-y-2">
           <div className="flex justify-between items-center">
             <h1 className="text-xl font-bold">Contact Detail</h1>
-            <Link href="/">
-              <Button size="sm">Back</Button>
-            </Link>
+            <BackButton />
           </div>
           <div className="py-4">
             <table className="table-auto">
