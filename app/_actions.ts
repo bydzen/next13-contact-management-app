@@ -7,9 +7,10 @@ import { addContact, removeContact, updateContact } from "@/lib/contacts"
 export const addContactAction = async (
   name: string,
   email: string,
-  phone: string
+  phone: string,
+  emailUser: string
 ) => {
-  await addContact(name, email, phone)
+  await addContact(name, email, phone, emailUser)
 
   revalidatePath("/")
 }

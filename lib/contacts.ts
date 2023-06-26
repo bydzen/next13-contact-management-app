@@ -1,9 +1,17 @@
 import prisma from "./prisma"
 import { addContactValidation, updateContactValidation } from "./validation"
 
-export async function getContacts() {
+export async function getContacts(email: string) {
   try {
+    const user = await prisma.user.findUnique({
+      where: { email },
+      select: {
+        id: true,
+      },
+    })
+
     const contacts = await prisma.contact.findMany({
+      where: { userId: user?.id },
       select: {
         id: true,
         name: true,
@@ -27,7 +35,12 @@ export const getContact = async (id: string) => {
   }
 }
 
-export async function addContact(name: string, email: string, phone: string) {
+export async function addContact(
+  name: string,
+  email: string,
+  phone: string,
+  emailUser: string
+) {
   try {
     const validContact = await addContactValidation.isValid({
       email,
@@ -51,9 +64,19 @@ export async function addContact(name: string, email: string, phone: string) {
 
     if (countPhone > 0) throw new Error("Phone already exists")
 
-    const contact = await prisma.contact.create({
-      data: { name, email, phone },
+    const contact = await prisma.user.update({
+      where: { email: emailUser },
+      data: {
+        contacts: {
+          create: {
+            name,
+            email,
+            phone,
+          },
+        },
+      },
     })
+
     return { contact, error: null }
   } catch (error) {
     return { contact: null, error }

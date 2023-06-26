@@ -12,7 +12,13 @@ import { Input } from "@/components/ui/input"
 
 import { addContactAction } from "../_actions"
 
-export default function CreateContactForm() {
+interface CreateContactFormProps {
+  emailUser: string
+}
+
+export default function CreateContactForm({
+  emailUser,
+}: CreateContactFormProps) {
   const nameRef = React.useRef<HTMLInputElement>(null)
   const emailRef = React.useRef<HTMLInputElement>(null)
   const phoneRef = React.useRef<HTMLInputElement>(null)
@@ -30,7 +36,7 @@ export default function CreateContactForm() {
 
     startTransition(async () => {
       await wait(1000)
-      await addContactAction(name, email, phone)
+      await addContactAction(name, email, phone, emailUser)
       await addContactValidation
         .validate({ name, email, phone }, { abortEarly: false })
         .then(async () => {
