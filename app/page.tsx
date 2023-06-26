@@ -25,8 +25,8 @@ export default async function HomePage() {
     <>
       <main className="grid grid-cols-7 gap-8 mt-8">
         <section className="w-full col-span-5 ">
-          <div className="bg-white p-8 shadow-md rounded-md space-y-2">
-            <div className="flex justify-between pb-4 relative">
+          <div className="p-8 space-y-2 bg-white rounded-md shadow-md">
+            <div className="flex justify-between pb-4 rela">
               <h2 className="text-xl font-bold">Contact List</h2>
               <div className="absolute -top-[100px] -right-[430px] flex justify-between items-center gap-2">
                 <Image
@@ -45,7 +45,7 @@ export default async function HomePage() {
           </div>
         </section>
         <section className="col-span-2 ">
-          <div className="bg-white p-8 shadow-md rounded-md space-y-2">
+          <div className="p-8 space-y-2 bg-white rounded-md shadow-md">
             <h2 className="text-xl font-bold">Add Contact</h2>
             <CreateContactForm emailUser={session.user?.email!} />
           </div>
