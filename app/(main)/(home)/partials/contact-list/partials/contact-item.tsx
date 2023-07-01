@@ -4,14 +4,9 @@ import React from "react"
 import Link from "next/link"
 
 import { Contact } from "@prisma/client"
-import { Loader2 as Loader } from "lucide-react"
-import { toast } from "react-hot-toast"
 
-import { wait } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-
-import { removeContactAction } from "../_actions"
-import { rootContext } from "../context"
+import { rootContext } from "@/app/context"
 
 interface ContactItemProps {
   contact: Contact

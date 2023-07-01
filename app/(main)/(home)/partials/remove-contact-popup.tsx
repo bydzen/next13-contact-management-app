@@ -7,9 +7,8 @@ import { toast } from "react-hot-toast"
 
 import { wait } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-
-import { removeContactAction } from "../_actions"
-import { rootContext } from "../context"
+import { removeContactAction } from "@/app/_actions"
+import { rootContext } from "@/app/context"
 
 export default function RemoveContactPopup() {
   const {

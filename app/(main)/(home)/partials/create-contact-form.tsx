@@ -9,8 +9,7 @@ import { wait } from "@/lib/utils"
 import { addContactValidation } from "@/lib/validation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-
-import { addContactAction } from "../_actions"
+import { addContactAction } from "@/app/_actions"
 
 interface CreateContactFormProps {
   emailUser: string

@@ -1,5 +1,6 @@
-import ContactItem from "@/partials/contact-item"
 import { Contact } from "@prisma/client"
+
+import ContactItem from "./partials/contact-item"
 
 interface ContactListProps {
   contacts: Contact[]

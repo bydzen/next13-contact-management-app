@@ -1,12 +1,9 @@
-import Link from "next/link"
-
 import { Contact } from "@prisma/client"
 
 import { getContact } from "@/lib/contacts"
-import { Button } from "@/components/ui/button"
 
-import UpdateContactForm from "./partials/UpdateContactForm"
 import BackButton from "./partials/back-button"
+import UpdateContactForm from "./partials/update-contact-form"
 
 interface ContactPageProps {
   params: {
